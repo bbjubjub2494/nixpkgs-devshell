@@ -1,8 +1,0 @@
-./master:
-        remotes:
-                upstream: https://github.com/NixOS/nixpkgs
-                bbjubjub2494: ssh://github.com/bbjubjub2494/nixpkgs
-        merges:
-                - upstream master
-                - bbjubjub2494 disable-sage-tests
-        target: bbjubjub2494 master
