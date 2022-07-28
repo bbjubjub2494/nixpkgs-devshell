@@ -7,7 +7,7 @@
   inputs.nixpkgs-hammering.url = "github:/jtojnar/nixpkgs-hammering";
 
   outputs = { self, nixpkgs, devshell, flake-utils, nixpkgs-hammering }:
-    let overlays = [ devshell.overlay nixpkgs-hammering.overlay ];
+    let overlays = [ devshell.overlay (final: prev: { inherit (nixpkgs-hammering.packages.${final.system}) nixpkgs-hammering; }) ];
     in
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = import nixpkgs { inherit overlays system; }; in
